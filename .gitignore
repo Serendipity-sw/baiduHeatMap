@@ -1,0 +1,5 @@
+baiduHeatMap
+*.exe
+*.pid
+jstmp/*
+/.idea
