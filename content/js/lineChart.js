@@ -94,8 +94,7 @@ var lineOption = {
         }
     }],
     backgroundColor:'#082740',
-    width:'371px',
-    top:'-15555px'
+    width:'371px'
 };
 var myChart = echarts.init(document.getElementsByClassName('axon_graph')[0]);
 myChart.setOption(lineOption,true);

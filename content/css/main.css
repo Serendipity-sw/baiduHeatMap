@@ -19,7 +19,7 @@ body > .axon_heatMap > .axon_rightArea > .axon_area > .axon_humanTraffic > .axon
 body > .axon_heatMap > .axon_rightArea > .axon_area > .axon_humanTraffic > .axon_head > .axon_title {color: white;height: 17px;display: block;padding-left: 18px;background: url(../images/headIcon.png) no-repeat 0px 4px;background-size: 12px;}
 
 body > .axon_heatMap > .axon_rightArea > .axon_area > .axon_humanTraffic > .axon_head > .axon_graph {height: 231px;width: 436px;background-color: #082740;margin-top: 6px;}
-body > .axon_heatMap > .axon_rightArea > .axon_area > .axon_humanTraffic > .axon_head > .axon_graph canvas {margin-top: -7px;}
+body > .axon_heatMap > .axon_rightArea > .axon_area > .axon_humanTraffic > .axon_head > .axon_graph canvas {margin-top: -14px;}
 
 body > .axon_heatMap > .axon_rightArea > .axon_area > .axon_pieArea {margin-top: 12px;margin-left: 18px;}
 
