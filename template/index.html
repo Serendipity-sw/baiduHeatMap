@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="../content/css/base.css">
+    <link rel="stylesheet" href="../content/css/main.css">
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=0CWwKLVyT5cX8pHWM66cqDd6"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/library/Heatmap/2.0/src/Heatmap_min.js"></script>
+    <script type="text/javascript" src="../content/js/echarts.min.js"></script>
+    <title>GMS热力图</title>
+</head>
+<body>
+<div class="axon_heatMap">
+    <div class="axon_leftArea" id="container">
+    </div>
+    <div class="axon_rightArea">
+        <div class="axon_rightShrinkBtn"></div>
+        <div class="axon_area">
+            <span class="axon_title">
+                浦东机场区域分析
+            </span>
+            <img src="../content/images/closeBtn.png" alt="关闭按钮" class="axon_closeBtn">
+            <div class="axon_humanTraffic">
+                <div class="axon_head">
+                    <span class="axon_title">
+                        实时人流量
+                    </span>
+                    <div class="axon_graph">
+
+                    </div>
+                </div>
+            </div>
+            <ul class="axon_pieArea">
+                <li class="axon_showArea">
+                    <div class="axon_head"><span class="axon_title">年龄分布</span></div>
+                    <div class="axon_showPieArea"></div>
+                </li>
+                <li class="axon_showArea">
+                    <div class="axon_head"><span class="axon_title">性别分布</span></div>
+                    <div class="axon_showPieArea"></div>
+                </li>
+                <li class="axon_showArea">
+                    <div class="axon_head"><span class="axon_title">归属地分布</span></div>
+                    <div class="axon_showPieArea"></div>
+                </li>
+                <li class="axon_showArea">
+                    <div class="axon_head"><span class="axon_title">ARPU分布</span></div>
+                    <div class="axon_showPieArea"></div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    //判断浏览区是否支持canvas
+    function isSupportCanvas(){
+        var elem = document.createElement('canvas');
+        return !!(elem.getContext && elem.getContext('2d'));
+    }
+
+    var points=[];
+
+    var map = new BMap.Map("container");          // 创建地图实例
+    var point = new BMap.Point(121.572673, 31.212917);
+    map.centerAndZoom(point, 15);             // 初始化地图，设置中心点坐标和地图级别
+    map.enableScrollWheelZoom(); // 允许滚轮缩放
+    if(!isSupportCanvas()){
+        alert('热力图目前只支持有canvas支持的浏览器,您所使用的浏览器不能使用热力图功能~')
+    }
+    heatmapOverlay = new BMapLib.HeatmapOverlay({"radius":20});
+    map.addOverlay(heatmapOverlay);
+    heatmapOverlay.setDataSet({data:points,max:100});
+
+
+
+
+</script>
+</html>
