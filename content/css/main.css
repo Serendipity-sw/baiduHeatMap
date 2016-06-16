@@ -2,15 +2,15 @@ body > .axon_heatMap {width: 100%;height: 100%;}
 
 body > .axon_heatMap > .axon_leftArea {width: 100%;height: 100%;}
 
-body > .axon_heatMap > .axon_rightArea {position: absolute;right: 8px;top: 8px;width: 506px;height: 749px;}
-body > .axon_heatMap > .axon_rightArea >.axon_rightShrinkBtn {width: 66px;height: 66px;float: left;border-radius: 48px;position: absolute;background: #2c5c84 url(../images/rightShrinkBtn.png) no-repeat 15px;background-size: 13px;top: 50%;margin-top: -33px;}
+body > .axon_heatMap > .axon_rightArea {position: absolute;right: 8px;top: 8px;width: 506px;height: 779px;}
+body > .axon_heatMap > .axon_rightArea >.axon_rightShrinkBtn {width: 66px;height: 66px;float: left;border-radius: 48px;position: absolute;background: #2c5c84 url(../images/rightShrinkBtn.png) no-repeat 15px;background-size: 13px;top: 50%;margin-top: -33px;cursor: pointer;}
 
 body > .axon_heatMap > .axon_rightArea > .axon_area {background-color: #2c5c84;position: relative;margin-left: 36px;height: 100%;}
 
 
 body > .axon_heatMap > .axon_rightArea > .axon_area > .axon_title {display: block;color: white;font-size: 28px;letter-spacing: 2px;text-align: center;margin-top: 18px;}
 
-body > .axon_heatMap > .axon_rightArea > .axon_area > .axon_closeBtn {position: absolute;top: 12px;right: 12px;width: 31px;}
+body > .axon_heatMap > .axon_rightArea > .axon_area > .axon_closeBtn {position: absolute;top: 12px;right: 12px;width: 31px;cursor: pointer;display: none;}
 
 body > .axon_heatMap > .axon_rightArea > .axon_area > .axon_humanTraffic {margin-top: 14px;margin-left: 18px;}
 
@@ -35,4 +35,4 @@ body > .axon_heatMap > .axon_rightArea > .axon_area > .axon_pieArea > .axon_show
 
 body > .axon_heatMap > .axon_rightArea > .axon_area > .axon_pieArea > .axon_showArea > .axon_head > .axon_title {color: white;background: url(../images/pieAreaPicture.png) no-repeat;padding-left: 21px;}
 
-body > .axon_heatMap > .axon_rightArea > .axon_area > .axon_pieArea > .axon_showArea > .axon_showPieArea {width: 100%;height: 163px;background-color: #082740;margin-top: 5px;}
+body > .axon_heatMap > .axon_rightArea > .axon_area > .axon_pieArea > .axon_showArea > .axon_showPieArea {width: 100%;height: 181px;background-color: #082740;margin-top: 5px;}
