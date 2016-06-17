@@ -32,29 +32,6 @@ func init() {
 		}
 	}, nil, 40)
 	deferinit.AddRoutine(notifyTemplates)
-	deferinit.AddRoutine(watchFuncDir)
-}
-
-/**
-定时运行程序
-创建人:邵炜
-创建时间:2016年3月7日09:51:42
-输入参数: 终止命令  计数器对象
-*/
-func watchFuncDir(ch chan struct{}, wg *sync.WaitGroup) {
-	go func() {
-		<-ch
-
-		jsTmr.Stop()
-		wg.Done()
-	}()
-
-	jsTmr = time.NewTimer(time.Minute)
-	for {
-		//需要定时执行的方法
-		jsTmr.Reset(time.Minute)
-		<-jsTmr.C
-	}
 }
 
 /**
@@ -65,12 +42,10 @@ func watchFuncDir(ch chan struct{}, wg *sync.WaitGroup) {
 */
 func loadTemplates(e *gin.Engine) {
 	t, err := template.New("tmpls").Funcs(funcName).ParseGlob(tempDir + "*")
-
 	if err != nil {
 		glog.Error("loadTemplates failed: %s %s \n", tempDir, err.Error())
 		return
 	}
-
 	e.SetHTMLTemplate(t)
 }
 
