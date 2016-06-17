@@ -135,7 +135,7 @@ func selectMapHistAndStreamRawRouter(c *gin.Context) {
 创建时间:2016年6月17日13:59:38
 */
 func index(c *gin.Context) {
-	glog.Info("index http success! userHttpInfo: %s \n")
+	glog.Info("index http success! userHttpInfo: %s \n", userReqInfo(c.Request))
 	c.HTML(http.StatusOK, "index.html", nil)
 }
 
