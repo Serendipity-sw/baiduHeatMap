@@ -1,6 +1,12 @@
 /**
  * Created by gloomysw on 2016/06/15.
  */
+var ageData=[
+    {value:0, name:'0-15岁  '},
+    {value:0, name:'16-25岁'},
+    {value:0, name:'26-40岁'},
+    {value:0, name:'40岁以上'}
+];
 var agePieOption = {
     backgroundColor:'#082740',
     legend: {
@@ -53,12 +59,7 @@ var agePieOption = {
                   length2:2
               }
             },
-            data:[
-                {value:335, name:'0-15岁  '},
-                {value:310, name:'16-25岁'},
-                {value:234, name:'26-40岁'},
-                {value:135, name:'40岁以上'}
-            ]
+            data:ageData
         }
     ],
     color:['#4bcaff','#2a80b1', '#20bbb5', '#77fffa']
@@ -66,3 +67,31 @@ var agePieOption = {
 
 var agePieChart = echarts.init(document.getElementsByClassName('axon_showPieArea')[0]);
 agePieChart.setOption(agePieOption);
+
+/**
+ * 年龄饼图处理方法
+ * 创建人:邵炜
+ * 创建时间:2016年6月17日16:37:14
+ * @param heatMapHistList 数据对象数组
+ */
+function agePieProcess(heatMapHistList) {
+    ageData.forEach(function (index) {
+        ageData[index].value=0;
+    });
+    heatMapHistList.forEach(function(index,value){
+        if (value.Age <= 40) {
+            ageData[2].value++
+        }else if(value.Age <= 25){
+            ageData[1].value++
+        }else if(value.Age <= 15){
+            ageData[0].value++
+        }else{
+            ageData[3].value++
+        }
+    });
+    agePieChart.setOption({
+        series: [{
+            data: ageData
+        }]
+    });
+}

@@ -1,33 +1,14 @@
 /**
  * Created by wei on 2016/06/15.
  */
-function randomData() {
-    now = new Date(+now + oneDay);
-    value = value + Math.random() * 21 - 10;
-    return {
-        name: now.toString(),
-        value: [
-            [now.getFullYear(), now.getMonth() + 1, now.getDate()].join('-'),
-            Math.round(value)
-        ]
-    }
-}
-
 var data = [];
-var now = +new Date(1997, 9, 3);
-var oneDay = 24 * 3600 * 1000;
-var value = Math.random() * 1000;
-for (var i = 0; i < 1000; i++) {
-    data.push(randomData());
-}
 
 var lineOption = {
     tooltip: {
         trigger: 'axis',
         formatter: function (params) {
             params = params[0];
-            var date = new Date(params.name);
-            return date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + ' : ' + params.value[1];
+            return params.name + ' | ' + params.value[1];
         },
         axisPointer: {
             animation: false
@@ -98,17 +79,23 @@ var lineOption = {
 };
 var myChart = echarts.init(document.getElementsByClassName('axon_graph')[0]);
 myChart.setOption(lineOption,true);
-// app.timeTicket =
-setInterval(function () {
 
-    for (var i = 0; i < 5; i++) {
+/**
+ * 折线图处理方法
+ * 创建人:邵炜
+ * 创建时间:2016年6月17日16:25:31
+ * @param heatMapHistList 数据对象数组
+ */
+function lineChartProcess(heatMapHistList) {
+var now=new Date();
+    var timeStr=now.getHours()+":"+now.getMinutes();
+    data.push({"name":timeStr,"value":[timeStr,heatMapHistList.length]});
+    if (data.length > 5) {
         data.shift();
-        data.push(randomData());
     }
-
     myChart.setOption({
         series: [{
             data: data
         }]
     });
-}, 1000);
+}

@@ -78,8 +78,51 @@
     map.addOverlay(heatmapOverlay);
     heatmapOverlay.setDataSet({data:points,max:100});
 
+    /**
+     * 数据请求
+     * 创建人:邵炜
+     * 创建时间:2016年6月17日15:39:17
+     */
+    function dataHttpRequest() {
+        var url="../selectMapHistAndStreamRawRouter?callback=callbackDataProcess&timeSpan="+new Date().getTime();
+        var scriptElement=document.createElement("script");
+        scriptElement.src=url;
+        document.getElementsByTagName("head")[0].append(scriptElement);
+    }
 
+    /**
+     * 回调函数数据处理
+     * 创建人:邵炜
+     * 创建时间:2016年6月17日15:41:11
+     * @param data 返回数据
+     */
+    function callbackDataProcess(data) {
+        if (data.ResultCode === "00000") {
+            var resultJsonData=JSON.parse(data.Message);
+            var streamRawJson=JSON.parse(resultJsonData.StreamRaw);
+            var heatMapHistJson=JSON.parse(resultJsonData.HeatMapHist);
+            heatMapProcess(JSON.parse(streamRawJson));
+            var heatMapHistList=JSON.parse(heatMapHistJson);
+            lineChartProcess(heatMapHistList);
+            agePieProcess(heatMapHistList);
+            arpuPieProcess(heatMapHistList);
+            attributionPieProcess(heatMapHistList);
+            sexPieProcess(heatMapHistList);
+        }
+    }
 
-
+    /**
+     * 热力图显示方法
+     * 创建人:邵炜
+     * 创建时间:2016年6月17日15:56:22
+     * @param streamRawList 热力图数据
+     */
+    function heatMapProcess(streamRawList) {
+        points.length=0;
+        streamRawList.forEach(function(index,value){
+            points.push({"lng":value.Lng,"lat":value.Lat,"count":value.Count});
+        });
+        heatmapOverlay.setDataSet({data:points,max:100});
+    }
 </script>
 </html>

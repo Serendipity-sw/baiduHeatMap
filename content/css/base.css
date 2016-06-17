@@ -1,4 +1,4 @@
-body, html, div, ul, li, input, img {
+body, html, ul, li, img {
     padding: 0;
     margin: 0;
     display: block;
@@ -7,23 +7,9 @@ body, html, div, ul, li, input, img {
     box-sizing: border-box;
 }
 
-a {
-    text-decoration: none;
-    color: black;
-}
-a:visited {    text-decoration: none;
-}
 
 span {
     font: normal 12px/1.5 'microsoft yahei';
-}
-
-input {
-    outline: none;
-}
-
-textarea {
-    resize: none;
 }
 
 body, html {

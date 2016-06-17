@@ -141,14 +141,18 @@
     heatmapOverlay = new BMapLib.HeatmapOverlay({"radius":20});
     map.addOverlay(heatmapOverlay);
     heatmapOverlay.setDataSet({data:points,max:100});
+
+//  setTimeout(function () {
+//        heatmapOverlay.show();
+//    },3000);
     //是否显示热力图
     function openHeatmap(){
-        heatmapOverlay.show();
+
     }
     function closeHeatmap(){
         heatmapOverlay.hide();
     }
-    closeHeatmap();
+//    closeHeatmap();
     function setGradient(){
         /*格式如下所示:
          {
