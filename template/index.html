@@ -124,5 +124,12 @@
         });
         heatmapOverlay.setDataSet({data:points,max:100});
     }
+
+    dataHttpRequest();
+
+    /**
+     * 每隔一分钟运行一次数据获取
+     */
+    setInterval(dataHttpRequest,60000);
 </script>
 </html>
