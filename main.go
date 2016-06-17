@@ -129,5 +129,8 @@ func router(r *gin.Engine) {
 		g.GET("/", func(c *gin.Context) { c.String(200, "ok") })
 
 		g.GET("/assets/*pth", assetsFiles)
+		g.GET("/selectRegionStreamRawRouter",selectRegionStreamRawRouter) //查询区域分析集合数据路由方法
+		g.GET("/selectRegionHeatMapHistRouter",selectRegionHeatMapHistRouter) //查询热力图显示区域数据路由方法
+		g.GET("/selectMapHistAndStreamRawRouter",selectMapHistAndStreamRawRouter) //查询区域分析集合数据及热力图显示区域数据路由方法
 	}
 }

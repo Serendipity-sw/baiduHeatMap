@@ -2,6 +2,7 @@ package main
 
 import (
 	"gopkg.in/mgo.v2"
+	"gopkg.in/mgo.v2/bson"
 	"fmt"
 	"github.com/guotie/config"
 	"github.com/smtc/glog"
@@ -95,7 +96,7 @@ func mongoDBClose() {
 func selectRegionStreamRaw()(*string,error) {
 var regionStreamRawList []regionStreamRaw
 	c:=session.DB("mwc").C("region_stream_raw")
-	err:=c.Find(nil).All(&regionStreamRawList)
+	err:=c.Find(bson.M{"region_id":"BLZX"}).All(&regionStreamRawList)
 	if err != nil {
 		glog.Error("selectRegionStreamRaw select data is error! err: %s \n",err.Error())
 		return nil,err
@@ -116,7 +117,7 @@ var regionStreamRawList []regionStreamRaw
 func selectRegionHeatMapHist()(*string,error) {
 var regionHeatMapHistList []regionHeatMapHist
 	c:=session.DB("mwc").C("region_heatmap_hist")
-	err:=c.Find(nil).All(&regionHeatMapHistList)
+	err:=c.Find(bson.M{"region_id":"BLZX"}).All(&regionHeatMapHistList)
 	if err != nil {
 		glog.Error("selectRegionHeatMapHist select data is error! err: %s \n",err.Error())
 		return nil,err
