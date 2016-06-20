@@ -30,7 +30,9 @@ var attributionPieOption = {
                 normal:{
                     label:{
                         show: true,
-                        formatter: '{d}%'
+                        formatter:  function(params){
+                            return Math.round(params.percent)+"%";
+                        }
                     },
                     labelLine :{show:true}
                 }
@@ -74,10 +76,10 @@ attributionPieChart.setOption(attributionPieOption);
  * @param heatMapHistList 数据对象集合
  */
 function attributionPieProcess(heatMapHistList) {
- attrbutionPieData.forEach(function(index){
+ attrbutionPieData.forEach(function(value,index){
      attrbutionPieData[index].value=0;
  });
-    heatMapHistList.forEach(function(index,value){
+    heatMapHistList.forEach(function(value){
         switch (value.Locale){
             case "1"://本地号码
                 attrbutionPieData[0].value++;

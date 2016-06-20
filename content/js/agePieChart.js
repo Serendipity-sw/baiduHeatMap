@@ -31,7 +31,9 @@ var agePieOption = {
                 normal:{
                     label:{
                         show: true,
-                        formatter: '{d}%'
+                        formatter:  function(params){
+                            return Math.round(params.percent)+"%";
+                        }
                     },
                     labelLine :{show:true}
                 }
@@ -75,10 +77,10 @@ agePieChart.setOption(agePieOption);
  * @param heatMapHistList 数据对象数组
  */
 function agePieProcess(heatMapHistList) {
-    ageData.forEach(function (index) {
+    ageData.forEach(function (value,index) {
         ageData[index].value=0;
     });
-    heatMapHistList.forEach(function(index,value){
+    heatMapHistList.forEach(function(value){
         if (value.Age <= 40) {
             ageData[2].value++
         }else if(value.Age <= 25){

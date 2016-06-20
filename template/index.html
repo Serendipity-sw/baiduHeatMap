@@ -15,10 +15,10 @@
     <div class="axon_leftArea" id="container">
     </div>
     <div class="axon_rightArea">
-        <div class="axon_rightShrinkBtn"></div>
+        <div class="axon_rightShrinkBtn" onclick="showAndHide();"></div>
         <div class="axon_area">
             <span class="axon_title">
-                浦东机场区域分析
+                上海国际博览中心区域分析
             </span>
             <img src="../content/images/closeBtn.png" alt="关闭按钮" class="axon_closeBtn">
             <div class="axon_humanTraffic">
@@ -87,7 +87,7 @@
         var url="../selectMapHistAndStreamRawRouter?callback=callbackDataProcess&timeSpan="+new Date().getTime();
         var scriptElement=document.createElement("script");
         scriptElement.src=url;
-        document.getElementsByTagName("head")[0].append(scriptElement);
+        document.getElementsByTagName("head")[0].appendChild(scriptElement);
     }
 
     /**
@@ -99,15 +99,14 @@
     function callbackDataProcess(data) {
         if (data.ResultCode === "00000") {
             var resultJsonData=JSON.parse(data.Message);
-            var streamRawJson=JSON.parse(resultJsonData.StreamRaw);
-            var heatMapHistJson=JSON.parse(resultJsonData.HeatMapHist);
-            heatMapProcess(JSON.parse(streamRawJson));
-            var heatMapHistList=JSON.parse(heatMapHistJson);
-            lineChartProcess(heatMapHistList);
-            agePieProcess(heatMapHistList);
-            arpuPieProcess(heatMapHistList);
-            attributionPieProcess(heatMapHistList);
-            sexPieProcess(heatMapHistList);
+            var streamRawJson=resultJsonData.streamRaw;
+            var heatMapHistJson=resultJsonData.heatMapHist;
+            heatMapProcess(heatMapHistJson);
+            lineChartProcess(streamRawJson);
+            agePieProcess(streamRawJson);
+            arpuPieProcess(streamRawJson);
+            attributionPieProcess(streamRawJson);
+            sexPieProcess(streamRawJson);
         }
     }
 
@@ -119,7 +118,7 @@
      */
     function heatMapProcess(streamRawList) {
         points.length=0;
-        streamRawList.forEach(function(index,value){
+        streamRawList.forEach(function(value){
             points.push({"lng":value.Lng,"lat":value.Lat,"count":value.Count});
         });
         heatmapOverlay.setDataSet({data:points,max:100});
@@ -131,5 +130,10 @@
      * 每隔一分钟运行一次数据获取
      */
     setInterval(dataHttpRequest,60000);
+
+    function showAndHide() {
+        var right=document.querySelector(".axon_rightArea").style.right;
+        document.querySelector(".axon_rightArea").style.right=right==="-469px"?"8px":"-469px";
+    }
 </script>
 </html>

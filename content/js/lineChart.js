@@ -2,13 +2,13 @@
  * Created by wei on 2016/06/15.
  */
 var data = [];
-
+var xDate=[];
 var lineOption = {
     tooltip: {
         trigger: 'axis',
         formatter: function (params) {
             params = params[0];
-            return params.name + ' | ' + params.value[1];
+            return params.name + ' | ' + params.value;
         },
         axisPointer: {
             animation: false
@@ -21,7 +21,8 @@ var lineOption = {
         }
     },
     xAxis: {
-        type: 'time',
+        type: 'category',
+        data:xDate,
         splitLine: {
             show: false
         },
@@ -29,9 +30,6 @@ var lineOption = {
             lineStyle:{
                 color:'#999999'
             }
-        },
-        axisTick:{
-            inside:true
         },
         axisLabel:{
             textStyle:{
@@ -89,13 +87,18 @@ myChart.setOption(lineOption,true);
 function lineChartProcess(heatMapHistList) {
 var now=new Date();
     var timeStr=now.getHours()+":"+now.getMinutes();
-    data.push({"name":timeStr,"value":[timeStr,heatMapHistList.length]});
+    data.push(heatMapHistList.length);
+    xDate.push(timeStr);
     if (data.length > 5) {
         data.shift();
+        xDate.shift();
     }
     myChart.setOption({
         series: [{
             data: data
-        }]
+        }],
+        xAxis:{
+            data:xDate
+        }
     });
 }

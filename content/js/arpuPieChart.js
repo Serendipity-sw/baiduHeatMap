@@ -31,7 +31,9 @@ var arpuPieOption = {
                 normal:{
                     label:{
                         show: true,
-                        formatter: '{d}%'
+                        formatter:  function(params){
+                            return Math.round(params.percent)+"%";
+                        }
                     },
                     labelLine :{show:true}
                 }
@@ -75,10 +77,10 @@ arpuPieChart.setOption(arpuPieOption);
  * @param heatMapHistList 数据对象数组
  */
 function arpuPieProcess(heatMapHistList) {
-    arpuData.forEach(function(index){
+    arpuData.forEach(function(value,index){
         arpuData[index].value=0;
     });
-    heatMapHistList.forEach(function(index,value){
+    heatMapHistList.forEach(function(value){
         if (value.Arpu <= 199) {
             arpuData[2].value++
         }else if(value.Arpu<=99){

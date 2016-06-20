@@ -7,6 +7,9 @@ func logInit(debug bool) {
 	var option = make(map[string]interface{})
 
 	option["typ"] = "file"
-
-	glog.InitLogger(glog.DEV, option)
+	if debug {
+		glog.InitLogger(glog.DEV, option)
+	} else {
+		glog.InitLogger(glog.PRO, option)
+	}
 }

@@ -4,5 +4,5 @@
   "contentDir": "content",
   "dbhost": "192.10.36.227",
   "dbport": 27017,
-  "port":":8000"
+  "port":":8083"
 }

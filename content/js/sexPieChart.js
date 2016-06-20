@@ -29,7 +29,9 @@ var sexPieOption = {
                 normal:{
                     label:{
                         show: true,
-                        formatter: '{d}%'
+                        formatter: function(params){
+                            return Math.round(params.percent)+"%";
+                        }
                     },
                     labelLine :{show:true}
                 }
@@ -73,10 +75,10 @@ sexPieChart.setOption(sexPieOption);
  * @param heatMapHistList 数据对象集合
  */
 function sexPieProcess(heatMapHistList) {
-    sexData.forEach(function(index){
+    sexData.forEach(function(value,index){
         sexData[index].value=0;
     });
-    heatMapHistList.forEach(function(index,value){
+    heatMapHistList.forEach(function(value){
         switch (value.Gender){
             case "0"://女
                 sexData[1].value++;
@@ -85,5 +87,10 @@ function sexPieProcess(heatMapHistList) {
                 sexData[0].value++;
                 break;
         }
+    });
+    sexPieChart.setOption({
+        series: [{
+            data: sexData
+        }]
     });
 }

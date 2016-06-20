@@ -111,12 +111,12 @@ func selectMapHistAndStreamRawRouter(c *gin.Context) {
 	创建时间:2016年6月17日13:44:53
 	*/
 	type resultHeatMapStruct struct {
-		StreamRaw   string `json:"streamRaw"`   //区域分析集合json字符串
-		HeatMapHist string `json:"heatMapHist"` //热力图区域数据集合json字符串
+		StreamRaw   *[]regionStreamRaw   `json:"streamRaw"`   //区域分析集合json字符串
+		HeatMapHist *[]regionHeatMapHist `json:"heatMapHist"` //热力图区域数据集合json字符串
 	}
 	resultHeatMapStructClass := resultHeatMapStruct{
-		StreamRaw:   *jsonDataStreamRawIn,
-		HeatMapHist: *jsonDataHeatMapHistIn,
+		StreamRaw:   jsonDataStreamRawIn,
+		HeatMapHist: jsonDataHeatMapHistIn,
 	}
 	resultHeatMapStructByte, err := json.Marshal(resultHeatMapStructClass)
 	if err != nil {

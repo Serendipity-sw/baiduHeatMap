@@ -94,7 +94,7 @@ func mongoDBClose() {
 创建人:邵炜
 创建时间:2016年6月16日14:33:18
 */
-func selectRegionStreamRaw() (*string, error) {
+func selectRegionStreamRaw() (*[]regionStreamRaw, error) {
 	var regionStreamRawList []regionStreamRaw
 	c := session.DB("mwc").C("region_stream_raw")
 	err := c.Find(bson.M{"region_id": "BLZX"}).All(&regionStreamRawList)
@@ -108,8 +108,7 @@ func selectRegionStreamRaw() (*string, error) {
 		return nil, err
 	}
 	go glog.Info("selectRegionStreamRaw select success! dataJsonStr: %s \n", string(dataJsonStr))
-	dataJsonStrIn := string(dataJsonStr)
-	return &dataJsonStrIn, nil
+	return &regionStreamRawList, nil
 }
 
 /**
@@ -117,7 +116,7 @@ func selectRegionStreamRaw() (*string, error) {
 创建人:邵炜
 创建时间:2016年6月16日14:33:18
 */
-func selectRegionHeatMapHist() (*string, error) {
+func selectRegionHeatMapHist() (*[]regionHeatMapHist, error) {
 	var regionHeatMapHistList []regionHeatMapHist
 	c := session.DB("mwc").C("region_heatmap_hist")
 	err := c.Find(bson.M{"region_id": "BLZX"}).All(&regionHeatMapHistList)
@@ -131,6 +130,5 @@ func selectRegionHeatMapHist() (*string, error) {
 		return nil, err
 	}
 	go glog.Info("selectRegionHeatMapHist select success! dataJsonStr: %s \n", string(dataJsonStr))
-	dataJsonStrIn := string(dataJsonStr)
-	return &dataJsonStrIn, nil
+	return &regionHeatMapHistList, nil
 }
