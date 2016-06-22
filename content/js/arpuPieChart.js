@@ -81,12 +81,12 @@ function arpuPieProcess(heatMapHistList) {
         arpuData[index].value=0;
     });
     heatMapHistList.forEach(function(value){
-        if (value.Arpu <= 199) {
-            arpuData[2].value++
-        }else if(value.Arpu<=99){
-            arpuData[1].value++
-        }else if(value.Arpu<=49){
+        if (value.Arpu >= 0 && value.Arpu <= 49) {
             arpuData[0].value++
+        }else if (value.Arpu>=50 && value.Arpu<=99){
+            arpuData[1].value++
+        }else if(value.Arpu>=100&&value.Arpu<=199){
+            arpuData[2].value++
         }else{
             arpuData[3].value++
         }

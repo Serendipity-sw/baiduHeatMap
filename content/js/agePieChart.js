@@ -81,14 +81,14 @@ function agePieProcess(heatMapHistList) {
         ageData[index].value=0;
     });
     heatMapHistList.forEach(function(value){
-        if (value.Age <= 40) {
-            ageData[2].value++
-        }else if(value.Age <= 25){
-            ageData[1].value++
-        }else if(value.Age <= 15){
-            ageData[0].value++
+        if (value.Age >= 0 && value.Age <= 15) {
+            ageData[0].value++;
+        }else if (value.Age >= 16 && value.Age <= 25) {
+            ageData[1].value++;
+        }else if (value.Age >= 26 && value.Age <= 40) {
+            ageData[2].value++;
         }else{
-            ageData[3].value++
+            ageData[3].value++;
         }
     });
     agePieChart.setOption({
