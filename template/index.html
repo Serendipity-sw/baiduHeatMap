@@ -75,6 +75,10 @@
     if(!isSupportCanvas()){
         alert('热力图目前只支持有canvas支持的浏览器,您所使用的浏览器不能使用热力图功能~')
     }
+    var  mapStyle ={
+        style : "light"  //设置地图风格为高端黑
+    };
+    map.setMapStyle(mapStyle);
     heatmapOverlay = new BMapLib.HeatmapOverlay({"radius":80});
     map.addOverlay(heatmapOverlay);
     heatmapOverlay.setDataSet({data:points,max:100});
