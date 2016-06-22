@@ -14,12 +14,24 @@ body > .axon_heatMap > .axon_rightArea > .axon_area > .axon_closeBtn {position: 
 
 body > .axon_heatMap > .axon_rightArea > .axon_area > .axon_humanTraffic {margin-top: 14px;margin-left: 18px;}
 
-body > .axon_heatMap > .axon_rightArea > .axon_area > .axon_humanTraffic > .axon_head {}
+body > .axon_heatMap > .axon_rightArea > .axon_area > .axon_humanTraffic > .axon_head {
+}
 
 body > .axon_heatMap > .axon_rightArea > .axon_area > .axon_humanTraffic > .axon_head > .axon_title {color: white;height: 17px;display: block;padding-left: 18px;background: url(../images/headIcon.png) no-repeat 0px 4px;background-size: 12px;}
 
+body > .axon_heatMap > .axon_rightArea > .axon_area > .axon_humanTraffic > .axon_head > .peopleNumberArea {
+    position: absolute;
+    z-index: 1;
+    top: 93px;
+    right: 64px;
+    color: white;
+}
+body > .axon_heatMap > .axon_rightArea > .axon_area > .axon_humanTraffic > .axon_head > .peopleNumberArea>span {
+    color: #7bfef4;
+    font-size: 35px;
+}
 body > .axon_heatMap > .axon_rightArea > .axon_area > .axon_humanTraffic > .axon_head > .axon_graph {height: 231px;width: 436px;background-color: #082740;margin-top: 6px;}
-body > .axon_heatMap > .axon_rightArea > .axon_area > .axon_humanTraffic > .axon_head > .axon_graph canvas {margin-top: -14px;}
+body > .axon_heatMap > .axon_rightArea > .axon_area > .axon_humanTraffic > .axon_head > .axon_graph canvas {margin-top: 21px;}
 
 body > .axon_heatMap > .axon_rightArea > .axon_area > .axon_pieArea {margin-top: 12px;margin-left: 18px;}
 

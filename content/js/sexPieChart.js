@@ -29,9 +29,10 @@ var sexPieOption = {
                 normal:{
                     label:{
                         show: true,
-                        formatter: function(params){
-                            return Math.round(params.percent)+"%";
-                        }
+                        formatter:'{d}%' 
+                        //     function(params){
+                        //     return Math.round(params.percent)+"%";
+                        // }
                     },
                     labelLine :{show:true}
                 }

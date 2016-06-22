@@ -87,7 +87,9 @@ myChart.setOption(lineOption,true);
 function lineChartProcess(heatMapHistList) {
 var now=new Date();
     var timeStr=now.getHours()+":"+now.getMinutes();
-    data.push(heatMapHistList.length);
+    var peopleNumber=heatMapHistList.length;
+    document.querySelector(".peopleNumberArea > span").textContent=peopleNumber;
+    data.push(peopleNumber);
     xDate.push(timeStr);
     if (data.length > 5) {
         data.shift();
