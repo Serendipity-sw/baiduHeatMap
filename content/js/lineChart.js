@@ -66,6 +66,12 @@ var lineOption = {
         showSymbol: false,
         hoverAnimation: false,
         data: data,
+        barWidth:'40',
+        label:{
+            normal:{
+                show:true
+            }
+        },
         itemStyle:{
             normal:{
                 color:'#65d5d1'
