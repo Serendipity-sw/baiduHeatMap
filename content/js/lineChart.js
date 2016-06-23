@@ -62,11 +62,11 @@ var lineOption = {
         }
     },
     series: [{
-        type: 'line',
+        type: 'bar',
         showSymbol: false,
         hoverAnimation: false,
         data: data,
-        lineStyle:{
+        itemStyle:{
             normal:{
                 color:'#65d5d1'
             }
